@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Pedidos de Reproducción</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #faf9f5;
+      color: #111;
+      font-family: Arial, sans-serif;
+      padding: 0.5rem;
+    }
+    .page {
+      max-width: 420px;
+      margin: 0 auto;
+      border: 1px solid #888;
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.02);
+    }
+    h1, h2, h3 {
+      margin: 0 0 0.75rem;
+      text-align: center;
+    }
+    .section {
+      border: 1px solid #888;
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.55rem 0.65rem;
+      margin-top: 0.25rem;
+      border: 1px solid #999;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    .button-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    button {
+      flex: 1;
+      padding: 0.8rem;
+      background: #dcd9cf;
+      border: 1px solid #999;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    button.full { flex: 1 1 100%; }
+    button:hover { background: #c5c1b3; }
+    .box {
+      border: 1px solid #888;
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+      background: #f7f5ef;
+    }
+    .box strong { display: block; margin-bottom: 0.35rem; }
+    .item-list {
+      white-space: pre-wrap;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: #222;
+    }
+    .totals {
+      border: 1px solid #888;
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+      background: #fff;
+    }
+    .totals p {
+      margin: 0.4rem 0;
+      font-size: 0.98rem;
+    }
+    .totals .big {
+      font-size: 1.35rem;
+      font-weight: bold;
+    }
+    .footer-btn {
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+    .footer-btn button {
+      width: 100%;
+      font-size: 1rem;
+      padding: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <h1>Sistema de Pedidos de Reproducción</h1>
+    <h2>Campus Central</h2>
+
+    <div class="section">
+      <label>Nombre del Cliente:
+        <input id="clienteNombre" placeholder="Nombre del Cliente">
+      </label>
+    </div>
+
+    <div class="section">
+      <label>Ver productos</label>
+      <button id="btnVerProductos" class="full">Ver productos</button>
+      <div id="productosLista" class="box" style="display:none; max-height:220px; overflow:auto;"></div>
+    </div>
+
+    <div class="section">
+      <label>Código:
+        <input id="codigoProducto" placeholder="Ej: R01">
+      </label>
+      <label>Cantidad:
+        <input id="cantidadProducto" type="number" min="1" value="1">
+      </label>
+      <div class="button-row">
+        <button id="btnAgregar">Agregar</button>
+        <button id="btnEliminar">Eliminar</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lista de productos agregados</h3>
+      <div id="listaAgregados" class="item-list">No hay productos agregados.</div>
+    </div>
+
+    <div class="totals">
+      <p class="big">Total: <span id="totalUsd">$0.00</span></p>
+      <p>Tasa BCV: <span id="bcvValor">30.00</span> Bs/$</p>
+      <p class="big">Total: <span id="totalBs">0.00</span> Bs</p>
+    </div>
+
+    <div class="section">
+      <label>Método de pago:
+        <select id="metodoPago">
+          <option>Pago Móvil</option>
+          <option>Transferencia</option>
+          <option>Pago en Efectivo</option>
+        </select>
+      </label>
+      <label>Cédula:
+        <input id="pagoCedula" placeholder="Cédula">
+      </label>
+      <label>Teléfono:
+        <input id="pagoTelefono" placeholder="Teléfono">
+      </label>
+      <label>Banco:
+        <input id="pagoBanco" placeholder="Banco">
+      </label>
+      <label>Referencia:
+        <input id="pagoReferencia" placeholder="Referencia">
+      </label>
+    </div>
+
+    <div class="footer-btn">
+      <button id="btnHacerPedido">Hacer pedido</button>
+    </div>
+  </div>
+
+  <script type="module" src="./dist/index.js"></script>
+</body>
+
+</html>
